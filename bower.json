@@ -1,0 +1,16 @@
+{
+  "name": "The 50 States Primer",
+  "description": "United States, Captials and Abbreviations Primer targeted at 3rd Graders",
+  "version": "0.0.1",
+  "homepage": "https://github.com/roy-selig/the-50-states",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.x",
+    "html5-boilerplate": "~4.3.0",
+    "bootstrap": "~3.1.1"
+  }
+}

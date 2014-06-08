@@ -1,0 +1,69 @@
+
+<div class="container"  ng-controller="statesReviewController">
+	
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6">
+			<div class="input-group input-lg">
+				<input 	type="text" class="form-control input-lg" 
+						ng-change="clearStateSelection()"
+						ng-model="searchTerm" 
+						placeholder="Search States, Abbreviations, Capitals and Regions">
+					<div class="input-group-addon"
+						 ng-click="clearSearch()">&times;</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row text-center">
+		
+		<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="svg2" viewBox="1 1 286 186"  height="400" y="0.0000000" x="0.0000000">
+			
+			
+				<path data-ng-repeat="state in states" 
+					  class="state outline"
+					  ng-attr-d="{{state.svg}}"></path>
+
+				<path data-ng-repeat="state in states | filter: filterStatesList" 
+					  id="{{state.abbreviation}}_1_" 
+					  class="state"
+					  data-ng-class="{'selected':currentState.abbreviation == state.abbreviation }"
+					  data-ng-click="selectState( state )"
+					  ng-attr-d="{{state.svg}}"></path>
+		
+
+		</svg>
+
+	</div>
+
+	<div class="row">
+		<h3 ng-hide="!currentState" class="text-center">{{currentState.name}}<small>&nbsp;[{{currentState.abbreviation}}]&nbsp;{{currentState.capital}}</small></h3>
+	</div>
+
+	
+
+	
+	<div class="row">
+		<div style="height:300px; overflow:scroll">
+			<table class="table">
+				<thead>
+					<th>Name</th>
+					<th>Abbreviation</th>
+					<th>Capital</th>
+					<th>Region</th>			
+				</thead>
+				<tbody>
+					<tr ng-repeat="state in states | filter: filterStatesList" 
+						ng-click="selectState( state )"
+						ng-class="{selected: (currentState.abbreviation == state.abbreviation  )}">
+						<td><a href="#{{state.abbrevaiton}}"></a>{{state.name}}</td>
+						<td>{{state.abbreviation}}</td>
+						<td>{{state.capital}}</td>
+						<td>{{state.region}}</td>
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+
+</div>

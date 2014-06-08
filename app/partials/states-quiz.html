@@ -1,0 +1,86 @@
+<div class="container"  ng-controller="statesQuizController">
+	<div class="row">
+
+        <div class="text-center col-sm-12">
+            <div class="btn-group" data-toggle="buttons">
+                <label  class="btn btn-default btn-lg"
+                        ng-class="{ active: region.selected} "
+                        ng-repeat="region in regions"
+                        ng-click="setRegion( region )">
+                    <input type="radio" name="regions">
+                    {{region.label}}
+                </label>
+            </div>
+            <div class="pull-right">Score: <span class="score" ng-class="{ pos: currentScore >-1 }">{{currentScore}}</span></div>
+
+
+
+        </div>
+    </div>
+
+	<div class="row text-center">
+		<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="svg2" viewBox="1 1 286 186"  height="500" y="0.0000000" x="0.0000000">
+			
+			
+				<path data-ng-repeat="state in states" 
+					  class="state outline"
+					  ng-attr-d="{{state.svg}}"></path>
+
+				<path data-ng-repeat="state in answerSet | filter: filterStatesList"
+					  id="{{state.abbreviation}}_1_" 
+					  class="state"
+					  data-ng-class="{'selected':currentState.abbreviation == state.abbreviation }"
+					  x-data-ng-click="selectState( state )"
+					  ng-attr-d="{{state.svg}}"></path>  
+		
+
+		</svg>
+
+	</div>
+
+	<div class="row text-center">
+		<h2>{{question}}</h2>
+	</div>
+
+	&nbsp;
+
+	<div class="row text-center" ng-hide="revealChoices ">
+		<button class="btn btn-lg btn-primary"
+				ng-click="doRevealChoices()">Reveal Choices</button>
+	</div>
+
+	<div ng-show="revealChoices">
+		<div class="row text-center" ng-hide="correct || incorrect" >
+			 <div class="btn-group" data-toggle="buttons">
+			    <label  class="btn btn-default btn-lg"
+                        ng-repeat="answer in answers"
+			    		ng-click="checkAnswer( answer )">
+			        <input type="radio" name="answers">
+			    	{{answer.label}}
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="row text-center" ng-show="correct">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6 alert alert-success"><b>Correct!</b> <span ng-bind-html="ttqa"></span></div>
+		<div class="col-sm-3"></div>
+	</div>
+	
+	<div class="row text-center" ng-show="incorrect">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6 alert alert-danger"><b>Incorrect!</b> <span ng-bind-html="ttqa"></span></div>
+		<div class="col-sm-3"></div>
+	</div>
+
+	&nbsp;
+
+	<div class="row text-center" ng-show="revealChoices">
+		<button class="btn btn-lg btn-primary"
+				ng-click="nextQuestion()">Next Question</button>
+	</div>
+
+
+
+</div>

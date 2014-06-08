@@ -1,0 +1,99 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+
+.table>tbody>tr:hover>td{
+  background-color:#f0f0f0;
+  cursor:pointer;
+}
+
+A{ color:#9DB68C; font-weight:bold;}
+.table>tbody>tr.selected>td{
+  background-color:#9DB68C;
+  color:white !important;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.table>tbody>tr.selected>td A,
+.table>tbody>tr.selected>td A:visited{
+  color:white;
+}
+
+
+path.state{
+  fill:#F5DEB3;
+  cursor:pointer;
+  stroke:white; 
+  stroke-width:0.5px;
+}
+
+path.state.outline{
+  fill:#ffffff;
+  stroke:#cccccc; 
+  stroke-width:0.5px;
+}
+
+path.state.selected{
+  fill:#9DB68C;
+
+}
+
+.alert{
+  font-size:18px;
+}
+
+.score{
+  display:inline-block;
+  border-radius:40px;
+  border:3px solid red;
+  font-size:18px;
+  font-weight:bold;
+  color:red;
+  padding:5px;
+  min-width:40px;
+  text-align:center;
+
+}
+
+.score.pos{
+  border-color:green;
+  color:green;
+}
+
+.btn-group .btn-default.active{
+
+    background-color:#F5DEB3;
+}
+
+
+
+
